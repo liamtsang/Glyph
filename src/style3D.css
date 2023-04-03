@@ -1,7 +1,6 @@
 
 html {
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
+  overflow: hidden;
 }
 
 @font-face {
@@ -13,6 +12,7 @@ body {
   margin: 0;
   background-image: url('../static/grid.svg');
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 h1 {
@@ -46,24 +46,51 @@ h2 {
   padding-bottom: 0;
 }
 
+h4 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
 p {
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  line-height: 1.5em;
-  margin: 1em;
-  color:black;
+  margin: 0;
+  padding-right: 2em;
+  font-size: 1.25rem;
+  color:white;
   text-align: left;
   font-family: 'IBM Plex Mono';
 }
 
 input{
-  background-color: white;
-  color: white;
+  margin-left: 2rem;
+
 }
 
 #divMsg {
+  overflow: hidden;
+
   padding-left: 1em;
- 
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+  background-color: rgba(0, 0, 0, 0.6);;
+
+  color: white;
+
+  margin: 0;
+  font-family: 'IBM Plex Mono';
+  font-size: 2rem;
+  font-weight: 100;
+  text-align: left;
+}
+
+#divMsg1 {
+  overflow: hidden;
+
+  padding-left: 1em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+  background-color: rgba(0, 0, 0, 0.6);;
 
   color: white;
 

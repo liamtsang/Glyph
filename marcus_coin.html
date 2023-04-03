@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style3D.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;600&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Glyph</title>
+    <script type="text/javascript">
+      function showHideDiv(ele) {
+        var srcElement = document.getElementById(ele);
+        if (srcElement != null) {
+          if (srcElement.style.display == "block") {
+            srcElement.style.display = 'none';
+          }
+          else {
+            srcElement.style.display = 'block';
+          }
+          return false;
+        }
+      }
+   </script>
+  </head>
+  <body>
+    <script type="module" src="./src/script.ts"></script>
+    <canvas class="webgl"></canvas>
+
+    <div style="position: absolute; z-index: 100; top: 5%; ">
+      <input id="divButton" type="button" value="🡇" onClick="showHideDiv('divMsg')"/><br><br>
+        <div id="divMsg" style="display: none;">
+          <h4>FRONT:</h4>
+          <p>Marcus [Aurelius] Antoninus Emperor (Augustus).</p>
+        </div>
+    </div>
+
+    <div style="position: absolute; z-index: 100; top: 60%; ">
+      <input id="divButton" type="button" value="🡇" onClick="showHideDiv('divMsg1')"/><br><br>
+        <div id="divMsg1" style="display: none;">
+          <h4>BACK:</h4>
+          <p>Harmony of the emperor (Augustus), holder of tribunician power for the 16th time, consul for the third time.</p>
+        </div>
+    </div>
+
+  </body>
+</html>
