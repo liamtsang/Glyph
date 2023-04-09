@@ -76,12 +76,31 @@ gltfLoader.load("./static/roman_coin/scene.gltf", (gltf: any) => {
 /**
  * Text
  */
-const element = document.createElement( 'div' );
-element.className = 'element';
-element.textContent = 'Au';
-element.style.backgroundColor = 'rgba(0,127,127,';
-const objectCSS = new CSS3DObject( element );
-scene.add( objectCSS );
+const loader = new FontLoader();
+
+loader.load( 'static/fonts/OffBit/OffBit_Trial_Bold.json', function ( font: any ) {
+
+	const geometry = new TextGeometry( 'Hello threejs', {
+		font: font,
+		size: 0.2,
+		height: 0.00001,
+		bevelEnabled: false,
+	} );
+  const materials = new THREE.MeshPhongMaterial( { color: 0xffffff,transparent: true});
+  materials.opacity = 0.5;
+  const textMesh1 = new THREE.Mesh( geometry, materials );
+  console.log(camera.position)
+
+  var center = new THREE.Vector3();
+  textMesh1.geometry.computeBoundingBox();
+  textMesh1.geometry.boundingBox.getCenter(center);
+  textMesh1.geometry.center();
+
+
+  textMesh1.position.y = 2;
+
+  scene.add(textMesh1);
+} );
 
 /**
  * Grids
@@ -126,8 +145,8 @@ scene.add(directionalLight);
 /**
  * Controls */
 const controls = new OrbitControls(camera, canvas);
-controls.minPolarAngle = Math.PI/2;
-controls.maxPolarAngle = Math.PI/2;
+//controls.minPolarAngle = Math.PI/2;
+//controls.maxPolarAngle = Math.PI/2;
 
 controls.target.set(0, 0, 0);
 controls.enableDamping = true;
@@ -160,7 +179,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
 const tick = () => {
   // Update controls
-  //controls.update()
+  controls.update()
 
   // Render
   renderer.render(scene, camera);
