@@ -78,29 +78,41 @@ gltfLoader.load("./static/roman_coin/scene.gltf", (gltf: any) => {
  */
 const loader = new FontLoader();
 
-loader.load( 'static/fonts/OffBit/OffBit_Trial_Bold.json', function ( font: any ) {
+function addText(text, y, z, rotate, color){
+  loader.load( 'static/fonts/OffBit/OffBit_Trial_Bold.json', function ( font: any ) {
+    const geometry1 = new TextGeometry( text, {
+      font: font,
+      size: 0.2,
+      height: 0.00001,
+      bevelEnabled: false,
+    } );
+    
+    const materials = new THREE.MeshPhongMaterial( { color: color,transparent: true});
+    const textMesh1 = new THREE.Mesh( geometry1, materials );
+  
+    var center1 = new THREE.Vector3();
+    textMesh1.geometry.computeBoundingBox();
+    textMesh1.geometry.boundingBox.getCenter(center1);
+    textMesh1.geometry.center();
+    textMesh1.position.y = y;
+    textMesh1.rotation.y = rotate;
+    textMesh1.position.z = z;
 
-	const geometry = new TextGeometry( 'Hello threejs', {
-		font: font,
-		size: 0.2,
-		height: 0.00001,
-		bevelEnabled: false,
-	} );
-  const materials = new THREE.MeshPhongMaterial( { color: 0xffffff,transparent: true});
-  materials.opacity = 0.5;
-  const textMesh1 = new THREE.Mesh( geometry, materials );
-  console.log(camera.position)
+    scene.add(textMesh1);
+  } );
+}
 
-  var center = new THREE.Vector3();
-  textMesh1.geometry.computeBoundingBox();
-  textMesh1.geometry.boundingBox.getCenter(center);
-  textMesh1.geometry.center();
+addText("Marcus Aurelius Antoninus", 2, 0, 2*Math.PI, '#ffffff');
+addText("Marcus Aurelius Antoninus", 2, -.001, 2*Math.PI, '#000000');
+addText("Harmony of the emperor", -1, 0, Math.PI, '#ffffff');
+addText("Harmony of the emperor", -1, .001, Math.PI, '#000000');
+addText("holder of tribunician power", -1.25, 0, Math.PI, '#ffffff');
+addText("holder of tribunician power", -1.25, .001, Math.PI, '#000000');
+addText("for the 16th time", -1.5, 0, Math.PI, '#ffffff');
+addText("for the 16th time", -1.5, .001, Math.PI, '#000000');
+addText("consul for the third time", -1.75, 0, Math.PI, '#ffffff');
+addText("consul for the third time", -1.75, .001, Math.PI, '#000000');
 
-
-  textMesh1.position.y = 2;
-
-  scene.add(textMesh1);
-} );
 
 /**
  * Grids
