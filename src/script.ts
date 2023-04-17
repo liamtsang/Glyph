@@ -77,42 +77,45 @@ gltfLoader.load("./static/roman_coin/scene.gltf", (gltf: any) => {
  * Text
  */
 const loader = new FontLoader();
+const font = await new Promise(res => new FontLoader().load('static/fonts/IBM Plex Mono/IBM Plex Mono_Regular.json', res))
+const geo = new TextGeometry("hello", { 
+  font: font,
+  size: 0.2,
+  height: 0.00001,
+  bevelEnabled: false,})
+const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial())
 
-function addText(text, y, z, rotate, color){
-  loader.load( 'static/fonts/OffBit/OffBit_Trial_Bold.json', function ( font: any ) {
-    const geometry1 = new TextGeometry( text, {
-      font: font,
-      size: 0.2,
-      height: 0.00001,
-      bevelEnabled: false,
-    } );
-    
-    const materials = new THREE.MeshPhongMaterial( { color: color,transparent: true});
-    const textMesh1 = new THREE.Mesh( geometry1, materials );
+
+function addText(y, z, rotate, color){
+  const materials = new THREE.MeshBasicMaterial( { color: color,transparent: true,depthWrite: false,});
+  console.log(materials);
   
-    var center1 = new THREE.Vector3();
-    textMesh1.geometry.computeBoundingBox();
-    textMesh1.geometry.boundingBox.getCenter(center1);
-    textMesh1.geometry.center();
-    textMesh1.position.y = y;
-    textMesh1.rotation.y = rotate;
-    textMesh1.position.z = z;
-
-    scene.add(textMesh1);
-  } );
+  var center1 = new THREE.Vector3();
+  mesh.geometry.computeBoundingBox();
+  mesh.geometry.boundingBox.getCenter(center1);
+  mesh.geometry.center();
+  mesh.position.y = y;
+  mesh.rotation.y = rotate;
+  mesh.position.z = z;
+  return mesh;
 }
 
-addText("Marcus Aurelius Antoninus", 2, 0, 2*Math.PI, '#ffffff');
-addText("Marcus Aurelius Antoninus", 2, -.001, 2*Math.PI, '#000000');
-addText("Harmony of the emperor", -1, 0, Math.PI, '#ffffff');
-addText("Harmony of the emperor", -1, .001, Math.PI, '#000000');
-addText("holder of tribunician power", -1.25, 0, Math.PI, '#ffffff');
-addText("holder of tribunician power", -1.25, .001, Math.PI, '#000000');
-addText("for the 16th time", -1.5, 0, Math.PI, '#ffffff');
-addText("for the 16th time", -1.5, .001, Math.PI, '#000000');
-addText("consul for the third time", -1.75, 0, Math.PI, '#ffffff');
-addText("consul for the third time", -1.75, .001, Math.PI, '#000000');
+let t1 = await addText(2, 0, 2*Math.PI, '#ffffff');
 
+//let t1 = await addText("Marcus Aurelius Antoninus", 2, 0, 2*Math.PI, '#ffffff');
+//addText("Marcus Aurelius Antoninus", 2, -.001, 2*Math.PI, '#000000');
+//let b1 = addText("Harmony of the emperor", -1, 0, Math.PI, '#ffffff');
+//addText("Harmony of the emperor", -1, .001, Math.PI, '#000000');
+//let b2 = addText("holder of tribunician power", -1.25, 0, Math.PI, '#ffffff');
+//addText("holder of tribunician power", -1.25, .001, Math.PI, '#000000');
+//let b3 = addText("for the 16th time", -1.5, 0, Math.PI, '#ffffff');
+//addText("for the 16th time", -1.5, .001, Math.PI, '#000000');
+//let b4 = addText("consul for the third time", -1.75, 0, Math.PI, '#ffffff');
+//addText("consul for the third time", -1.75, .001, Math.PI, '#000000');
+
+console.log(t1);
+scene.add(t1);
+t1.visible =false;
 
 /**
  * Grids
@@ -189,10 +192,19 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
  * Animate
  */
 
+/* Rotation Check */
+function checkRotation(){
+  if (camera.rotation.z > 1 || camera.rotation.z < -1) {
+    t1.visible = false
+  } else {
+    t1.visible = true
+  }
+}
+
 const tick = () => {
   // Update controls
   controls.update()
-
+  checkRotation()
   // Render
   renderer.render(scene, camera);
   CSSrenderer.render( scene, camera );
