@@ -1,0 +1,11 @@
+Model Information:
+* title:	MARCUS AURELIUS - BRITISH MUSEUM
+* source:	https://sketchfab.com/3d-models/marcus-aurelius-british-museum-b081df0b33074bc8a367d6bf5b794b54
+* author:	Arqueomodel3D (https://sketchfab.com/juanbrualla)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "MARCUS AURELIUS - BRITISH MUSEUM" (https://sketchfab.com/3d-models/marcus-aurelius-british-museum-b081df0b33074bc8a367d6bf5b794b54) by Arqueomodel3D (https://sketchfab.com/juanbrualla) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

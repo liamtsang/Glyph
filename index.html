@@ -11,12 +11,8 @@
     <title>Glyph</title>
   </head>
   <body>
-
       <section class="section">
-        <div>Teachable Machine Image Model</div>
-        <button type="button" onclick="init()">Start</button>
         <div id="webcam-container"></div>
-        <div id="label-container"></div>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
         <script type="text/javascript">
@@ -42,8 +38,8 @@
 
                 // Convenience function to setup a webcam
                 const flip = true; // whether to flip the webcam
-                webcam = new tmImage.Webcam(390, 844, flip); // width, height, flip
-                await webcam.setup(); // request access to the webcam
+                webcam = new tmImage.Webcam(window.innerWidth, window.innerHeight, flip); // width, height, flip
+                await webcam.setup({facingMode:"environment" }); // request access to the webcam
                 await webcam.play();
                 window.requestAnimationFrame(loop);
 
@@ -66,51 +62,16 @@
                 // predict can take in an image, video or canvas html element
                 const prediction = await model.predict(webcam.canvas);
                 for (let i = 0; i < maxPredictions; i++) {
-                    const classPrediction =
-                        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                    labelContainer.childNodes[i].innerHTML = classPrediction;
+                   
                 }
                 if (prediction[0].probability > 0.9 ) {
                   document.location.href = "marcus_coin.html";
                 }
             }
+
+            init();
+            
         </script>
       </section>
-
-      <div class="scene one"></div>
-
-      <section class="section-one">
-        <h1>MARCUS AURELIUS</h1>
-      </section>
-
-      <section class="section-two">
-        <div>
-          <h1>DENARIUS <br> 161-180 AD SILVER</h1>
-        </div>
-        <p>A denarius was a high value coin that would be worth about a days worth of labor.</p>
-        <p>This coin was made of silver and minted in Rome.</p>
-        <div class="bottom-align">
-          <h2>FRONT</h2>
-          <p>"Marcus Aurelius"</p>
-          <h2>BACK</h2>
-          <p>"Harmony of the emperor, holder of tribunician power for the 16th time, consul for the third time."</p>
-        </div>
-      </section>
-
-      <section class="section-three">
-        <h1>MARCUS AURELIUS 160-190 AD</h1>
-        <p>Over the winter of 161–162, news that a rebellion was brewing in Syria arrived and it was decided that Lucius should direct the Parthian war in person. </p>
-      </section>
-
-      <section class="section-four">
-        <h1>MARCUS AURELIUS 160-190 AD</h1>
-        <p>Over the winter of 161–162, news that a rebellion was brewing in Syria arrived and it was decided that Lucius should direct the Parthian war in person. </p>
-      </section>
-
-      <section class="section-five">
-   
-      </section>
-
-      <script type="module" src="./src/gsap.js"></script>
   </body>
 </html>

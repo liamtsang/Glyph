@@ -11,7 +11,8 @@ html {
 
 body {
   margin: 0;
-  background-image: url('../static/grid.svg');
+  color: white;
+  background-color: #111;
   background-attachment: fixed;
 }
 
@@ -20,23 +21,20 @@ h1 {
   padding-top: .5em;
   padding-bottom: .5em;
 
-  background-image: url('../static/wreath.svg');
-  background-repeat: no-repeat;
-  background-color: white;
-  color: black;
+  background-color: rgba(0,0,0,0.5);
 
   margin: 0;
   font-family: 'Durer', sans-serif;
   font-size: 2.5rem;
   font-weight: 100;
   text-align: left;
-  border-style: solid;
-  border-width: thin;
+  border-bottom: 3px;
+  border-bottom-style: double;
+  border-color: rgba(121, 121, 121, 0.5);;
 }
 
 h2 {
   padding-left: 1.2rem;
-  color: black;
 
   margin: 0;
   font-family: 'IBM Plex Mono';
@@ -51,22 +49,18 @@ p {
   padding-right: 1.2rem;
   line-height: 1.5em;
   margin: 1em;
-  color:black;
   text-align: left;
   font-family: 'IBM Plex Mono';
+  color: white;
+  mix-blend-mode: difference;
 }
 
 input{
   background-color: white;
-  color: white;
 }
 
 #divMsg {
   padding-left: 1em;
- 
-
-  color: white;
-
   margin: 0;
   font-family: 'IBM Plex Mono';
   font-size: 2rem;

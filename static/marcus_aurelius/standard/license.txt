@@ -1,0 +1,11 @@
+Model Information:
+* title:	Roman Standard
+* source:	https://sketchfab.com/3d-models/roman-standard-4ba4f2e92c8148f29e4ef30bb035e1ab
+* author:	Tomsearle16 (https://sketchfab.com/Tomsearle16)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Roman Standard" (https://sketchfab.com/3d-models/roman-standard-4ba4f2e92c8148f29e4ef30bb035e1ab) by Tomsearle16 (https://sketchfab.com/Tomsearle16) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
