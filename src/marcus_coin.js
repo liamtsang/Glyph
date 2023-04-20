@@ -1,19 +1,11 @@
-//@ts-ignore
 import * as THREE from "three";
-//@ts-ignore
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-//@ts-ignore
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-//@ts-ignore
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
-//@ts-ignore
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
-//@ts-ignore
 import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer.js";
-//@ts-ignore
 import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 
-//@ts-ignore
 import * as dat from "lil-gui";
 
 // Debug
@@ -67,7 +59,7 @@ scene.add(camera);
 //GLTFLoader
 const gltfLoader = new GLTFLoader();
 
-gltfLoader.load("./static/roman_coin/scene.gltf", (gltf: any) => {
+gltfLoader.load("./static/roman_coin/scene.gltf", (gltf) => {
   gltf.scene.scale.set(100, 100, 100);
   gltf.scene.position.set(0, .5, 0);
   scene.add(gltf.scene);
@@ -165,7 +157,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-let CSSrenderer: any;
+let CSSrenderer;
 CSSrenderer = new CSS3DRenderer(canvas);
 CSSrenderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -179,8 +171,6 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 /**
  * Animate
  */
-
-
 
 /* Rotation Check */
 function checkRotation(){
