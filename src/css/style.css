@@ -85,16 +85,16 @@ input{
 }
 
 section {
-  height: 100dvh;
+  height: 100vh;
   scroll-snap-align: start;
   text-align: center;
   position: relative;
 }
 
 section div{
-  height: 50dvh;
+  height: 50vh;
   position: relative;
-  top: 51lvh;
+  top: 51vh;
   mix-blend-mode: difference;
 }
 

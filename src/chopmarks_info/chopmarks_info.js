@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 // URLS
+import coinurl from "../../public/static/chopmarks/coin/chopmark_coin.glb?url"
 import shipurl from "../../public/static/chopmarks/ship/junk_ship.glb?url"
 import stampurl from "../../public/static/chopmarks/stamp/stamp.glb?url"
 import stallurl from "../../public/static/chopmarks/stall_decimated/market_stall.glb?url"
@@ -16,6 +17,7 @@ const loadingManager = new THREE.LoadingManager( () => {
   loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
 } );
 
+const coin = await new Promise(res => new GLTFLoader(loadingManager).load(coinurl, res))
 const ship = await new Promise(res => new GLTFLoader(loadingManager).load(shipurl, res))
 const stamp = await new Promise(res => new GLTFLoader(loadingManager).load(stampurl, res))
 const stall = await new Promise(res => new GLTFLoader(loadingManager).load(stallurl, res))
@@ -49,7 +51,7 @@ function init() {
     /**
      * Lights
      */
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, .8);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -105,7 +107,12 @@ function init() {
     grids.position.set(0, 20 , -3);
     grids.rotation.set(0, Math.PI/4 , 0);
     scene.add(grids);
-
+    
+    /* COIN */
+    coin.scene.scale.set(.035, .035, .035);
+    coin.scene.position.set(-2.75, 0, -1.5);
+    coin.scene.rotation.set(0, Math.PI/2, 0);
+       
     /* SHIP */
     ship.scene.scale.set(.8, .8, .8);
     ship.scene.position.set(20, 0, -5);
@@ -121,6 +128,7 @@ function init() {
     stall.scene.rotation.set(0, -Math.PI, 0);
     stall.scene.position.set(0, -20, -4);
     
+    scene.add(coin.scene);
     scene.add(ship.scene);
     scene.add(stamp.scene);
     scene.add(stall.scene);
@@ -198,9 +206,20 @@ function init() {
       end: "top top",
   }})
 
+  /* Coin */
+  car_anim.to(coin.scene.position, { y: 5.5, scrollTrigger: {
+    trigger: ".section-two",
+    start: "top bottom",
+    end: "top top",
+  }})
+  car_anim.to(coin.scene.position, { x: 20, scrollTrigger: {
+    trigger: ".section-two",
+    start: "bottom bottom",
+    end: "bottom top",
+  }})
 
-  /* BUST */
-  // Bust Y
+
+  // Ship Y
   car_anim.to(ship.scene.position, { y: 3, scrollTrigger: {
     trigger: ".section-three",
     start: "top bottom",
@@ -216,7 +235,7 @@ function init() {
     start: "bottom bottom",
     end: "bottom top",
   }}) 
-  // Bust Rotation
+  // Ship Rotation
    car_anim.to(ship.scene.rotation, { y: 3.14/2, scrollTrigger: {
     trigger: ".section-three",
     start: "top bottom",

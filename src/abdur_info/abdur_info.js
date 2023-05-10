@@ -5,8 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 // URLS
+import coinurl from "../../public/static/abdur_rahman/coin/coin.glb?url";
 import flagurl from "../../public/static/abdur_rahman/flag/scene.glb?url"
-import columnurl from "../../public/static/abdur_rahman/indian_column/column.glb?url"
 import rifleurl from "../../public/static/abdur_rahman/rifle/rifle.glb?url"
 
 const loadingManager = new THREE.LoadingManager( () => {
@@ -19,6 +19,8 @@ function onTransitionEnd( event ) {
 	const element = event.target;
 	element.remove();
 }
+
+const coin = await new Promise(res => new GLTFLoader(loadingManager).load(coinurl, res))
 const flag = await new Promise(res => new GLTFLoader(loadingManager).load(flagurl, res))
 const rifle = await new Promise(res => new GLTFLoader(loadingManager).load(rifleurl, res))
 
@@ -106,9 +108,14 @@ function init() {
     grids.rotation.set(0, Math.PI/4 , 0);
     scene.add(grids);
 
+    /* coin */
+    coin.scene.scale.set(2, 2, 2);
+    coin.scene.position.set(0, 20, -5);
+    coin.scene.rotation.set(0, Math.PI/2, 0);
+
     /* flag */
     flag.scene.scale.set(.004, .004, .004);
-    flag.scene.position.set(20, 0, -5);
+    flag.scene.position.set(20, 0, -6);
     flag.scene.rotation.set(0, 0, 0);
 
     /* rifle */
@@ -123,6 +130,7 @@ function init() {
     rifleGroup.position.set(4.1, 20, -5);
     
     scene.add(flag.scene);
+    scene.add(coin.scene);
     scene.add(rifleGroup);
 
     animate();
@@ -133,6 +141,8 @@ function init() {
 		// if ( mixer ) mixer.update( delta );
     requestAnimationFrame(animate);      
     renderer.render(scene, camera);
+    coin.scene.rotation.y += 0.0025;
+
   }
 
   init();
@@ -159,6 +169,13 @@ function init() {
   car_anim.to(grids.rotation, { y: 0, 
     ease: "back.out(0)",
     scrollTrigger: {
+      trigger: ".section-three",
+      start: "top bottom",
+      end: "top top",
+  }})
+  car_anim.to(grids.position, { z: -8, 
+    ease: "back.out(0)",
+    scrollTrigger: {
       trigger: ".section-four",
       start: "top bottom",
       end: "top top",
@@ -172,16 +189,25 @@ function init() {
   }})
 
 
+  /* Coin */
+  car_anim.to(coin.scene.position, { y: 4, scrollTrigger: {
+    trigger: ".section-two",
+    start: "top bottom",
+    end: "top top",
+  }})
+  car_anim.to(coin.scene.position, { x: -20, scrollTrigger: {
+    trigger: ".section-two",
+    start: "bottom bottom",
+    end: "bottom top",
+  }})
 
-
-  /* BUST */
-  // Bust Y
+  /* Flag */
   car_anim.to(flag.scene.position, { y: 0, scrollTrigger: {
     trigger: ".section-four",
     start: "top bottom",
     end: "top top",
   }})
-  car_anim.to(flag.scene.position, { x: -6.5, scrollTrigger: {
+  car_anim.to(flag.scene.position, { x: -7, scrollTrigger: {
     trigger: ".section-four",
     start: "top bottom",
     end: "bottom top",

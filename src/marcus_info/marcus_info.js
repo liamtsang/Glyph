@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 // URLS
+import coinurl from "../../public/static/marcus_aurelius/coin_decimated/coin.glb?url";
 import busturl from "../../public/static/marcus_aurelius/bust_decimate/bust.glb?url"
 import shieldurl from "../../public/static/marcus_aurelius/shield/roman_scutum_shield.glb?url"
 import bookurl from "../../public/static/marcus_aurelius/book/book.glb?url"
@@ -20,6 +21,7 @@ function onTransitionEnd( event ) {
 	element.remove();
 }
 
+const coin = await new Promise(res => new GLTFLoader(loadingManager).load(coinurl, res))
 const bust = await new Promise(res => new GLTFLoader(loadingManager).load(busturl, res))
 const shield = await new Promise(res => new GLTFLoader(loadingManager).load(shieldurl, res))
 const book = await new Promise(res => new GLTFLoader(loadingManager).load(bookurl, res))
@@ -110,6 +112,11 @@ function init() {
     grids.rotation.set(0, Math.PI/4 , 0);
     scene.add(grids);
 
+    /* COIN */
+    coin.scene.scale.set(.075, .075, .075);
+    coin.scene.position.set(0, 24, -5);
+    coin.scene.rotation.set(0, 0, 0);
+
     /* BUST */
     bust.scene.scale.set(.8, .8, .8);
     bust.scene.position.set(0, 30, -5);
@@ -143,6 +150,7 @@ function init() {
     book.scene.rotation.set(0, Math.PI/2, 0);
     book.scene.position.set(0, 20, -2);
 
+    scene.add(coin.scene);
     scene.add(bust.scene);
     scene.add(book.scene);
     scene.add(sh0,sh1,sh2,sh3);
@@ -155,6 +163,7 @@ function init() {
     renderer.render(scene, camera);
 
     /* Animations */
+    coin.scene.rotation.y += 0.0025;
   }
 
   init();
@@ -200,6 +209,17 @@ function init() {
       end: "top top",
   }})
   
+  /* COIN */
+  car_anim.to(coin.scene.position, { y: 4, scrollTrigger: {
+    trigger: ".section-two",
+    start: "top bottom",
+    end: "top top",
+  }})
+  car_anim.to(coin.scene.position, { x: -20, scrollTrigger: {
+    trigger: ".section-two",
+    start: "bottom bottom",
+    end: "bottom top",
+  }}) 
 
   /* BUST */
   // Bust Y
