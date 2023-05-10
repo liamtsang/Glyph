@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;600&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Glyph</title>
+    <style>
+      #loading-screen {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 1;
+        transition: 1s opacity;
+      }
+
+      #loading-screen.fade-out {
+          opacity: 0;
+      }
+
+      #loader {
+          display: block;
+          position: relative;
+          left: 50%;
+          top: 50%;
+          width: 150px;
+          height: 150px;
+          margin: -75px 0 0 -75px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #9370DB;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+      }
+      #loader:before {
+          content: "";
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          right: 5px;
+          bottom: 5px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #BA55D3;
+          -webkit-animation: spin 3s linear infinite;
+          animation: spin 3s linear infinite;
+      }
+      #loader:after {
+          content: "";
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 15px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #FF00FF;
+          -webkit-animation: spin 1.5s linear infinite;
+          animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+          0%   {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+      }
+      @keyframes spin {
+          0%   {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+      }
+    </style>
+  </head>
+  <body>
+      <section id="loading-screen">
+      <div id="loader"></div> 
+      </section>
+
+      <div style="z-index: 999;" class="scene one"></div>
+
+      <section class="section-one" id="intro">
+        <h1 id="top">MARCUS AURELIUS</h1>
+        <h1 id="bottom">ROME <br> 161-180 AD</h1>
+      </section>
+
+      <section class="section-two">
+        <div>
+          <h1><span>🞖</span> Background</h1>
+          <p>Marcus Aurelius, born in 121 AD in Rome, was a prominent figure in Roman history and is widely regarded as one of the Five Good Emperors. 
+          He began his political career as a consul and later served as a governor of various Roman provinces.</p>
+          <p>Not only was he a successful Roman emperor, but also a notable Stoic philosopher whose teachings and writings continue to be studied and admired to this day.</p>
+        </div>
+      </section>
+
+      <section class="section-three">
+        <div>
+          <h1><span>⧾</span> Legacy</h1>
+          <p>Marcus Aurelius is often regarded as the last of the "Five Good Emperors" who maintained the stability and prosperity of the Pax Romana period. However, towards the end of his reign, the empire began to experience significant challenges that would eventually lead to the collapse of the Roman Empire.</p>
+        </div>
+      </section>
+
+      <section class="section-four">
+        <div>
+          <h1><span>⚔</span> War</h1>
+          <p>During his entire Reign, the Roman Empire was under attack by German tribes along the Danube and Rhine rivers. Despite winning these wars, it preluded the Germanic invasions that would end the Western Roman Empire in the 4th and 5th century.</p>
+        </div>
+      </section>
+
+      <section class="section-five">
+        <div>
+          <h1><span>Φ</span> Philosophy</h1>
+          <p>The Meditations take the form of a personal notebook and were probably written while Marcus was on campaign in central Europe. In the Meditations Marcus engages in a series of philosophical exercises designed to digest philosophical theories. Stoicism is a philosophy that teaches us how to control our emotions and maintain emotional balance in all things.  
+            
+          </p>
+        </div>
+      </section>
+
+      <section class="section-six">
+        <div>
+          <a class="return-button" href="../index.html">BACK</a>
+        </div>      
+      </section>
+
+      <script type="module" src="marcus_info.js"></script>
+  </body>
+</html>

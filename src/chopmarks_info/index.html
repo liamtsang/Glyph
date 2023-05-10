@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;600&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Glyph</title>
+    <style>
+      #loading-screen {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        opacity: 1;
+        transition: 1s opacity;
+      }
+
+      #loading-screen.fade-out {
+          opacity: 0;
+      }
+
+      #loader {
+          display: block;
+          position: relative;
+          left: 50%;
+          top: 50%;
+          width: 150px;
+          height: 150px;
+          margin: -75px 0 0 -75px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #9370DB;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+      }
+      #loader:before {
+          content: "";
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          right: 5px;
+          bottom: 5px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #BA55D3;
+          -webkit-animation: spin 3s linear infinite;
+          animation: spin 3s linear infinite;
+      }
+      #loader:after {
+          content: "";
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 15px;
+          border-radius: 50%;
+          border: 3px solid transparent;
+          border-top-color: #FF00FF;
+          -webkit-animation: spin 1.5s linear infinite;
+          animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+          0%   {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+      }
+      @keyframes spin {
+          0%   {
+              -webkit-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg);
+          }
+          100% {
+              -webkit-transform: rotate(360deg);
+              -ms-transform: rotate(360deg);
+              transform: rotate(360deg);
+          }
+      }
+    </style>
+  </head>
+  <body>
+      <section id="loading-screen">
+      <div id="loader"></div> 
+      </section>
+
+      <div style="z-index: 999;" class="scene one"></div>
+
+      <section class="section-one" id="intro">
+        <h1 id="top">CHOPMARKS</h1>
+        <h1 id="bottom">PERU / CHINA <br> 1806 AD</h1>
+      </section>
+
+      <section class="section-two">
+        <div>
+          <h1><span>🞖</span> Background</h1>
+          <p>This is a Spanish colonial coin from Peru, that was embossed with markings by a Chinese merchant.</p>
+          <p>These coins were often demonetized currency from abandoned colonies, and the marks were used as a way to authenticate it's value. This practice started during the 18th century, up until 1933 when the government banned the practice.</p>
+        </div>
+      </section>
+
+      <section class="section-three">
+        <div>
+          <h1><span>⇵</span> Trade</h1>
+          <p>Global world trade truly kicked off around the 15th Century, when traders found faster sea based routes, circumventing the sluggish silk road.</p>
+          <p>Many countries were beginning to use currencies unbacked by gold or silver, but international trade was still done in precious metals. These chopmarked coins were a guarantee that you were getting a true silver coin, and not some lousy alloy.</p>
+        </div>
+      </section>
+
+      <section class="section-four">
+        <div>
+          <h1><span>⌼</span> Uses</h1>
+          <p>This time in China saw the Opium Wars, the Taiping Rebellion and the start of the People's Republic. This tumultuous period saw many changes of power and in tandem, currency. </p>
+          <p>People sought stable value, and precious metals like gold and silver were the standard. China had already been using fiat currency since the 10th century, so western currency was often what was available.</p>
+        </div>
+      </section>
+
+      <section class="section-five">
+        <div>
+          <h1><span>⍎</span> Seals</h1>
+          <p>  
+            Seals are an cultural tradition in China, which were used to authenticate documents and artwork. These seals were often made of stone, and were pressed into wax or clay to leave an impression.
+          </p>
+          <p>  
+            The chopmarks on these coins were often made with these seals, and were used to authenticate the value of the coin. The merchant would press the seal into the coin, and the impression would be left behind.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-six">
+        <div>
+          <a class="return-button" href="../index.html">BACK</a>
+        </div>      
+      </section>
+
+      <script type="module" src="chopmarks_info.js"></script>
+  </body>
+</html>
