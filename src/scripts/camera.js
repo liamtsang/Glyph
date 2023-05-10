@@ -1,5 +1,5 @@
 // the link to your model provided by Teachable Machine export panel
-const URL = "https://teachablemachine.withgoogle.com/models/BbiPzhaSf/"
+const URL = "https://teachablemachine.withgoogle.com/models/2kU1XckoD/"
 
 let model, webcam, labelContainer, maxPredictions
 
@@ -23,6 +23,10 @@ async function init() {
 	// append elements to the DOM --> **before starting the webcam**
 	// document.getElementById('webcam-container').appendChild(webcam.canvas); // just in case you want to use specifically the canvas
 	document.getElementById("webcam-container").appendChild(webcam.webcam) // webcam object needs to be added in any case to make this work on iOS
+	labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+    }
 
 	// grab video-object in any way you want and set the attributes --> **"muted" and "playsinline"**
 	let wc = document.getElementsByTagName("video")[0]
@@ -45,9 +49,19 @@ async function loop() {
 async function predict() {
 	// predict can take in an image, video or canvas html element
 	const prediction = await model.predict(webcam.canvas)
-	for (let i = 0; i < maxPredictions; i++) {}
-	if (prediction[0].probability > 0.9) {
-		document.location.href = "/marcus_coin"
+	for (let i = 0; i < maxPredictions; i++) {
+		const classPrediction =
+        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+		labelContainer.childNodes[i].innerHTML = classPrediction;
+	}
+	if (prediction[0].probability > 0.9) { 	
+		window.location.href = "https://www.glyph.guru/marcus_coin/" 
+	}
+	if (prediction[1].probability > 0.9) { 	
+		window.location.href = "https://www.glyph.guru/chopmarks_coin/" 
+	}
+	if (prediction[2].probability > 0.9) { 	
+		window.location.href = "https://www.glyph.guru/abdur_coin/" 
 	}
 }
 
