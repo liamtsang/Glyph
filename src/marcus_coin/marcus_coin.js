@@ -201,11 +201,6 @@ CSSrenderer = new CSS3DRenderer(canvas);
 CSSrenderer.setSize( window.innerWidth, window.innerHeight );
 
 //Color Management
-THREE.ColorManagement.enabled = true;
-THREE.ColorManagement.legacyMode = false;
-
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
 /**
  * Animate

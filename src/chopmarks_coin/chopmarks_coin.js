@@ -69,15 +69,12 @@ gltfLoader.load(busturl, (gltf) => {
   gltf.scene.rotation.set(0, -Math.PI/2, 0.1);
 
   console.log(gltf)
+
   const box = new THREE.Box3().setFromObject( gltf.scene );
-  
   const center = box.getCenter( new THREE.Vector3() );
-
-
   gltf.scene.position.x += ( gltf.scene.position.x - center.x );
   gltf.scene.position.y += ( gltf.scene.position.y - center.y );
   gltf.scene.position.z += ( gltf.scene.position.z - center.z );
-
 
   scene.add(gltf.scene);
 });

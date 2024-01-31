@@ -1,35 +1,88 @@
-<!DOCTYPE html>
+<!-- TODO -->
+<!-- #Homepage with videos & about-->
+<!-- #Selection screen with coins -->
+<!-- #Desktop mobile emulation -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="../public/android-chrome-512x512.png" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../public/android-chrome-512x512.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;600&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;600&family=Montserrat:wght@300;400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Glyph</title>
     <style>
-      body{
+      body,
+      html {
         margin: 0;
         padding: 0;
-        background-color: #000;
+        background-color: #0f0f0f;
+      }
+      main {
+        font-family: "IBM Plex Mono", monospace;
         overflow: hidden;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        text-align: left;
       }
-      webcam-container{
-        object-fit: fill;
+      #desc {
+        margin: 0 auto;
+        width: 50%;
       }
-      video {
-        width: 100%;
-        height: 100%;
+      ul {
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        color: cyan;
       }
     </style>
   </head>
   <body>
-     <div id="webcam-container"></div>
-     <div id="label-container"></div>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-        <script type="module" src="/scripts/camera.js"></script>
-      <h1 style="position: absolute; top: 0; z-index: -999;">Loading Camera...</h1>
+    <main>
+      <div id="desc">
+        <h1>Glyph</h1>
+        <p>
+          Glyph is a web app for museums. By using image recognition, vistiors
+          can point their phones at objects in the museum and be taken to a page
+          that includes a 3D model of the object, as well as information
+          regarding it's origin accompanied by thoughtful 3D graphics.
+        </p>
+        <p>
+          If you are viewing this outside of the IDM showcase here are the
+          direct links to take you to the demo pages:
+        </p>
+        <p>
+          <span style="font-weight: bold">Note:</span>
+          <mark>Glyph is designed only for mobile devices!</mark> Please view on
+          a phone or use dev tools (Ctrl+Shift+C on Chrome) to view in mobile
+          viewport.
+        </p>
+        <h2>Links</h2>
+        <ul>
+          <li><a href="./abdur_coin/">Abdur Rahman</a> - Afghanistan</li>
+          <li><a href="./chopmarks_coin/">Chopmarks</a> - Peru & China</li>
+          <li><a href="./marcus_coin/">Marcus Aurelius</a> - Rome</li>
+        </ul>
+      </div>
+    </main>
   </body>
 </html>
